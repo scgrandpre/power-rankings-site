@@ -1,6 +1,6 @@
 # Power Ranking Summary
 
-Generated: 2026-03-25 09:38
+Generated: 2026-03-25 22:36
 
 ## Run Overview
 
@@ -38,19 +38,6 @@ Generated: 2026-03-25 09:38
 | MIXED | hybrid_points | 66.3% | 243 |
 
 ## Top 10 Teams Per Pool
-
-### 
-| Rank | Team | Code | Rating | W-L | Matches |
-|---:|---|---|---:|---:|---:|
-| 1 | CJVA 16 Red | G16CJVBA6GE | 20.2 | 1-0 | 1 |
-| 2 | Libero 15 HUSKIES | G15LIBER1CH | 13.5 | 0-1 | 1 |
-| 3 | MGA 16's North | G16MGJVB1NE | 12.2 | 1-0 | 1 |
-| 4 | BEV 16 Skyline | G16BEVNY3GE | 3.2 | 1-0 | 1 |
-| 5 | Lunar 15 1 | G15LUNAR5GEX | 2.5 | 3-0 | 3 |
-| 6 | Capitals 15 National | G15CAPVC1GE | -5.5 | 0-1 | 1 |
-| 7 | CCC - Hawks 16 | G16LUNAR5GEX | -9.8 | 1-3 | 4 |
-| 8 | PVA 15 National Peak | G15PINVA2GE | -10.5 | 0-1 | 1 |
-| 9 | BEV 16 High Rise | G16BEVNY4GE | -25.8 | 0-1 | 1 |
 
 ### B14
 | Rank | Team | Code | Rating | W-L | Matches |
