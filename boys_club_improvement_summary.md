@@ -9,7 +9,7 @@
 - Sporting Albany Boys 16u (B16SAVBC1XL) [SAVBC] - delta win rate +0.80, delta point margin +22.00, delta vs expected +0.687
 - MVP BOS 17 Blue (B17MVPVA2NE) [MVPVA] - delta win rate +0.60, delta point margin +5.20, delta vs expected +0.669
 - PV Boys 18 2 (B18PVJVB2NE) [PVJVB] - delta win rate +0.80, delta point margin +19.40, delta vs expected +0.603
-- PV Boys 18 4 (B18PVJVB4NE) [PVJVB] - delta win rate +0.60, delta point margin +15.80, delta vs expected +0.587
+- PV Boys 18 4 (B18PVJVB4NE) [PVJVB] - delta win rate +0.60, delta point margin +15.80, delta vs expected +0.586
 - PV Boys 17 2 (B17PVJVB2NE) [PVJVB] - delta win rate +0.60, delta point margin +10.80, delta vs expected +0.526
 - Unity 18 Boys National Vikings (B18UNVBC1NE) [UNVBC] - delta win rate +0.60, delta point margin +8.80, delta vs expected +0.510
 - Boston United Boys 17 Northeast (B17RRJVB2NE) [RRJVB] - delta win rate +0.60, delta point margin +17.80, delta vs expected +0.481
@@ -24,7 +24,7 @@
 - PV Boys 16 1 (B16PVJVB1NE) [PVJVB] - delta win rate +0.40, delta point margin +9.00, delta vs expected +0.362
 - Blast 18 Fire (B18BVJVB1NE) [BVJVB] - delta win rate +0.40, delta point margin +14.00, delta vs expected +0.333
 - MVP BOS 14 Black (B14MVPVA1NE) [MVPVA] - delta win rate +0.40, delta point margin +0.80, delta vs expected +0.333
-- NEVBC Boys 18 Blue (B18NEVBC3NE) [NEVBC] - delta win rate +0.20, delta point margin -3.80, delta vs expected +0.325
+- NEVBC Boys 18 Blue (B18NEVBC3NE) [NEVBC] - delta win rate +0.20, delta point margin -3.80, delta vs expected +0.326
 
 ## Top Improving Boys Clubs
 

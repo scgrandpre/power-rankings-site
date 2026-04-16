@@ -1,0 +1,10 @@
+scope,pool_key,system,matches_total,picks_made,correct_picks,accuracy_pct
+overall,ALL,Local,530,530,404,76.23
+division,G12,Local,19,19,17,89.47
+division,G13,Local,41,41,35,85.37
+division,G14,Local,76,76,57,75.0
+division,G15,Local,109,109,81,74.31
+division,G16,Local,113,113,82,72.57
+division,G17,Local,82,82,69,84.15
+division,G18,Local,68,68,53,77.94
+division,MIXED,Local,22,22,10,45.45

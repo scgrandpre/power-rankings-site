@@ -1,4 +1,10 @@
 bu_team_code,bu_team_name,opponent_code,opponent_name,pool_key,first_loss_date,reversal_win_date,days_to_reversal,first_loss_point_margin,reversal_win_point_margin,point_margin_swing,first_loss_event,reversal_win_event
+G14RRJVB1NE,Boston United 14 National,G14DDVBC4NE,Dig Deep 14 Stars,G14,2026-02-21,2026-04-12,50,-15.0,11.0,26.0,AAUCL26#2-MA,AAUAprilChallenge26
+G14RRJVB2NE,Boston United 14 Northeast,G14TTVBC2NE,SLAM 14P Red,G14,2026-03-21,2026-04-12,22,-7.0,6.0,13.0,AAUSpringKickOff26,AAUAprilChallenge26
+G14RRJVB7NE,Boston United 14 Titanium,G14AVVBC3NE,Avidity 14 Emerald,G14,2026-04-11,2026-04-12,1,-5.0,1.0,6.0,AAUAprilChallenge26,AAUAprilChallenge26
+G17RRJVB2NE,Boston United 17 National - Dimitri,G17HRJVB1NE,HardRock 17,G17,2025-12-06,2026-04-11,126,-27.0,-3.0,24.0,25AAUHomeHolidaysGir,AAUAprilChallenge26
+G16RRJVB7NE,Boston United 16 Titanium,G16MIVBC4NE,Mass Impact 16 Cam,G16,2026-01-24,2026-04-11,77,-9.0,5.0,14.0,AAUChampsLeague26#1,AAUAprilChallenge26
+G13RRJVB4NE,Boston United 13 Sapphire,G13LDNER3NE,Lockdown VBC 13 Robins,G13,2026-02-21,2026-04-11,49,-18.0,-5.0,13.0,AAUCL26#2-MA,AAUAprilChallenge26
 G13RRJVB2NE,Boston United 13 Select - Brittany,G13TTVBC2NE,SLAM 13P Red,G13,2026-02-21,2026-03-22,29,-2.0,20.0,22.0,AAUCL26#2-MA,AAUSpringKickOff26
 G18RRJVB3NE,Boston United 18 Select,G18MAPVB3NE,Mass Power VB 18 Pink,G18,2026-02-22,2026-03-22,28,-9.0,13.0,22.0,AAUCL26#2-MA,AAUSpringKickOff26
 G18RRJVB2NE,Boston United 18 Northeast,G18MIVBC2NE,Mass Impact 18 Mike,G18,2025-12-07,2026-03-22,105,2.0,19.0,17.0,25AAUHomeHolidaysGir,AAUSpringKickOff26
