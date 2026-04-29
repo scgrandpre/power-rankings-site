@@ -1,13 +1,14 @@
 # Power Ranking Diagnostics
 
-- Total matches loaded: 6789
-- Matches used for ratings: 6677
+- Total matches loaded: 7655
+- Matches used for ratings: 7543
 - Excluded unknown results: 112
 - Selected production model: massey
 
 ## Overall model comparison
 
-- massey: accuracy=0.738, log_loss=0.623, brier=0.216, matches=6677
-- elo_margin: accuracy=0.689, log_loss=0.623, brier=0.217, matches=6677
-- elo_baseline: accuracy=0.671, log_loss=0.655, brier=0.231, matches=6677
-- hybrid_points: accuracy=0.670, log_loss=0.947, brier=0.251, matches=6677
+- massey: accuracy=0.740, log_loss=0.622, brier=0.215, matches=7543
+- elo_margin: accuracy=0.690, log_loss=0.619, brier=0.215, matches=7543
+- elo_baseline: accuracy=0.672, log_loss=0.652, brier=0.230, matches=7543
+- hybrid_points: accuracy=0.665, log_loss=1.022, brier=0.257, matches=7543
+- massey_recent: accuracy=0.660, log_loss=0.659, brier=0.233, matches=7543

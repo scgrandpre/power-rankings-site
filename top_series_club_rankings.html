@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Top Series Club Rankings</title>
+  <style>
+    :root {
+      --bg:#f3f5f9; --surface:#fff; --text:#111827; --muted:#6b7280;
+      --border:#e5e7eb; --primary:#1d4ed8; --radius:12px;
+      --shadow:0 1px 3px rgba(0,0,0,.08),0 8px 20px rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box;}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      margin:0;background:linear-gradient(180deg,#eef2fb 0%,var(--bg) 120px,var(--bg) 100%);
+      color:var(--text);font-size:14px;line-height:1.45;}
+    .wrap{max-width:1200px;margin:24px auto;padding:0 18px 60px;}
+    .page-header{padding:14px 2px 16px;margin-bottom:8px;}
+    .eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:4px;}
+    h1{margin:0 0 4px;font-size:1.9rem;font-weight:800;}
+    .sub{color:var(--muted);font-size:13px;}
+    .back-link{margin-bottom:16px;display:inline-block;color:var(--primary);text-decoration:none;font-size:13px;}
+    .back-link:hover{text-decoration:underline;}
+    section{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);
+      padding:20px 22px;margin-bottom:22px;}
+    h2{margin:0 0 14px;font-size:1.1rem;font-weight:700;}
+    h3{margin:14px 0 8px;font-size:.95rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+    .helper{font-size:12px;color:var(--muted);margin-bottom:12px;}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center;}
+    input,select{border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:13px;
+      background:#fff;color:var(--text);outline:none;}
+    input:focus,select:focus{border-color:var(--primary);}
+    .seg-group{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+    .seg-btn{padding:7px 16px;font-size:13px;font-weight:600;background:#fff;color:var(--muted);
+      border:none;cursor:pointer;transition:background .12s,color .12s;white-space:nowrap;}
+    .seg-btn:not(:last-child){border-right:1px solid var(--border);}
+    .seg-btn.active{background:var(--primary);color:#fff;}
+    table{width:100%;border-collapse:collapse;font-size:13px;}
+    th{text-align:left;padding:9px 10px;border-bottom:2px solid var(--border);
+      font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);white-space:nowrap;}
+    td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:middle;}
+    .club-row{cursor:pointer;transition:background .12s;}
+    .club-row:hover{background:#f0f4ff;}
+    .club-row.open{background:#f0f4ff;}
+    .detail-row td{padding:0;}
+    .detail-inner{padding:14px 10px 16px;background:#f8fafd;border-bottom:2px solid var(--border);}
+    .detail-grid{display:flex;flex-wrap:wrap;gap:10px;}
+    .detail-card{background:#fff;border:1px solid var(--border);border-radius:8px;
+      padding:10px 14px;min-width:200px;flex:1;}
+    .detail-card .dc-title{font-size:11px;color:var(--muted);font-weight:700;
+      text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;}
+    .detail-card .dc-entry{font-size:12px;margin-bottom:3px;}
+    .num{text-align:right;font-variant-numeric:tabular-nums;}
+    .rank-cell{width:40px;text-align:center;font-weight:700;font-size:1rem;color:var(--muted);}
+    .muted{color:var(--muted);}
+    .code{font-size:11px;font-family:monospace;}
+    .bar-wrap{display:flex;align-items:center;gap:8px;min-width:120px;}
+    .bar{height:10px;border-radius:5px;min-width:2px;}
+    .bar-label{font-size:12px;font-weight:600;white-space:nowrap;}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px;}
+    .card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;}
+    .card .label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;margin-bottom:4px;}
+    .card .value{font-size:1.5rem;font-weight:800;}
+    .event-chip{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;
+      background:#eff6ff;color:#1d4ed8;margin-right:4px;}
+    @media(max-width:640px){h1{font-size:1.4rem;}th,td{padding:7px 6px;font-size:12px;}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back-link" href="power_rankings_dashboard.html">← Back to Dashboard</a>
+  <div class="page-header">
+    <div class="eyebrow">NEAAU Top Series Circuit</div>
+    <h1>Club Rankings — Open Divisions</h1>
+    <div class="sub">Generated 2026-04-28 23:28 &nbsp;·&nbsp; Open brackets only</div>
+  </div>
+
+  <div class="cards" id="summaryCards"></div>
+
+  <section>
+    <h2>Club Leaderboard</h2>
+    <div class="helper">
+      Points = (N − finish + 1) per division of N teams. Larger divisions worth more.
+      Click any row to expand division-by-division results.
+    </div>
+    <div class="controls">
+      <div class="seg-group" id="eventSeg">
+        <button class="seg-btn active" data-val="ALL">Both Events</button>
+        <button class="seg-btn" data-val="AAUTopSeriesWinter26">Winter 2026</button>
+        <button class="seg-btn" data-val="AAUTopSeriesSpring26">Spring 2026</button>
+      </div>
+      <input id="clubSearch" type="text" placeholder="Search club…" style="flex:1;min-width:140px;"/>
+      <select id="minEntries">
+        <option value="1">All clubs</option>
+        <option value="2">2+ entries</option>
+        <option value="3">3+ entries</option>
+        <option value="5">5+ entries</option>
+      </select>
+    </div>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Club</th>
+            <th class="num" title="Sum of finish points">Points</th>
+            <th>Avg Finish %</th>
+            <th class="num">Entries</th>
+            <th class="num">1sts</th>
+            <th class="num">Top 3</th>
+            <th class="num">W-L</th>
+          </tr>
+        </thead>
+        <tbody id="clubTbody"></tbody>
+      </table>
+    </div>
+    <p id="clubCount" class="helper" style="margin-top:8px;"></p>
+  </section>
+
+  <section>
+    <h2>Division Standings Browser</h2>
+    <div class="helper">Browse final standings for any event + division.</div>
+    <div class="controls">
+      <select id="divEventFilter"><option value="ALL">All events</option></select>
+      <select id="divFilter"><option value="ALL">All age groups</option></select>
+    </div>
+    <div id="divStandingsOutput"></div>
+  </section>
+</div>
+
+<script>
+const details = [{"club": "CACLI", "club_name": "CALI", "event": "AAUTopSeriesWinter26", "division": "13 O", "team_code": "G13CACLI1GE", "team_name": "CALI 13 Black", "finish": 6, "n_teams": 8, "wins": 2, "losses": 3, "sets_for": 5, "sets_against": 7, "finish_pct": 37.5}, {"club": "CACLI", "club_name": "CALI", "event": "AAUTopSeriesWinter26", "division": "14 O", "team_code": "G14CACLI1GE", "team_name": "CALI 14 Black", "finish": 6, "n_teams": 9, "wins": 2, "losses": 3, "sets_for": 6, "sets_against": 8, "finish_pct": 44.4}, {"club": "CACLI", "club_name": "CALI", "event": "AAUTopSeriesWinter26", "division": "15 O", "team_code": "G15CACLI1GE", "team_name": "CALI 15 Black", "finish": 9, "n_teams": 12, "wins": 1, "losses": 4, "sets_for": 4, "sets_against": 9, "finish_pct": 33.3}, {"club": "CACLI", "club_name": "CALI", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16CACLI1GE", "team_name": "CALI 16 Black", "finish": 7, "n_teams": 14, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 6, "finish_pct": 57.1}, {"club": "CACLI", "club_name": "CALI", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17CACLI1GE", "team_name": "CALI 17 Black", "finish": 14, "n_teams": 14, "wins": 0, "losses": 5, "sets_for": 1, "sets_against": 10, "finish_pct": 7.1}, {"club": "CJJVB", "club_name": "CT Juniors", "event": "AAUTopSeriesSpring26", "division": "13 O", "team_code": "G13CJJVB1NE", "team_name": "CT Juniors 13 National", "finish": 7, "n_teams": 7, "wins": 0, "losses": 5, "sets_for": 1, "sets_against": 10, "finish_pct": 14.3}, {"club": "CJJVB", "club_name": "CT Juniors", "event": "AAUTopSeriesSpring26", "division": "14 O", "team_code": "G14CJJVB1NE", "team_name": "CT Juniors 14 National", "finish": 7, "n_teams": 7, "wins": 0, "losses": 5, "sets_for": 0, "sets_against": 10, "finish_pct": 14.3}, {"club": "CJJVB", "club_name": "CT Juniors", "event": "AAUTopSeriesSpring26", "division": "15 O", "team_code": "G15CJJVB1NE", "team_name": "CT Juniors 15 National", "finish": 5, "n_teams": 9, "wins": 2, "losses": 3, "sets_for": 4, "sets_against": 7, "finish_pct": 55.6}, {"club": "CJJVB", "club_name": "CT Juniors", "event": "AAUTopSeriesSpring26", "division": "16 O", "team_code": "G16CJJVB1NE", "team_name": "CT Juniors 16 National", "finish": 10, "n_teams": 10, "wins": 0, "losses": 5, "sets_for": 0, "sets_against": 10, "finish_pct": 10.0}, {"club": "CMJVB", "club_name": "CMASS EDGE", "event": "AAUTopSeriesSpring26", "division": "14 O", "team_code": "G14CMJVB1NE", "team_name": "CMASS EDGE 14 Black", "finish": 6, "n_teams": 7, "wins": 1, "losses": 4, "sets_for": 3, "sets_against": 9, "finish_pct": 28.6}, {"club": "CMJVB", "club_name": "CMASS EDGE", "event": "AAUTopSeriesSpring26", "division": "15 O", "team_code": "G15CMJVB1NE", "team_name": "CMASS EDGE 15 Black", "finish": 6, "n_teams": 9, "wins": 2, "losses": 3, "sets_for": 6, "sets_against": 7, "finish_pct": 44.4}, {"club": "CMJVB", "club_name": "CMASS EDGE", "event": "AAUTopSeriesSpring26", "division": "16 O", "team_code": "G16CMJVB1NE", "team_name": "CMASS EDGE 16 Black", "finish": 9, "n_teams": 10, "wins": 1, "losses": 4, "sets_for": 3, "sets_against": 8, "finish_pct": 20.0}, {"club": "CMJVB", "club_name": "CMASS EDGE", "event": "AAUTopSeriesSpring26", "division": "17 O", "team_code": "G17CMJVB1NE", "team_name": "CMASS EDGE 17 Black", "finish": 4, "n_teams": 9, "wins": 4, "losses": 2, "sets_for": 8, "sets_against": 6, "finish_pct": 66.7}, {"club": "CMJVB", "club_name": "CMASS EDGE", "event": "AAUTopSeriesSpring26", "division": "18 O", "team_code": "G18CMJVB1NE", "team_name": "CMASS EDGE 18 Black", "finish": 2, "n_teams": 8, "wins": 4, "losses": 1, "sets_for": 9, "sets_against": 3, "finish_pct": 87.5}, {"club": "CMJVB", "club_name": "CMASS EDGE", "event": "AAUTopSeriesWinter26", "division": "14 O", "team_code": "G14CMJVB1NE", "team_name": "CMASS EDGE 14 Black", "finish": 9, "n_teams": 9, "wins": 1, "losses": 5, "sets_for": 2, "sets_against": 10, "finish_pct": 11.1}, {"club": "CMJVB", "club_name": "CMASS EDGE", "event": "AAUTopSeriesWinter26", "division": "15 O", "team_code": "G15CMJVB1NE", "team_name": "CMASS EDGE 15 Black", "finish": 7, "n_teams": 12, "wins": 2, "losses": 3, "sets_for": 5, "sets_against": 6, "finish_pct": 50.0}, {"club": "CMJVB", "club_name": "CMASS EDGE", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16CMJVB1NE", "team_name": "CMASS EDGE 16 Black", "finish": 10, "n_teams": 14, "wins": 2, "losses": 3, "sets_for": 6, "sets_against": 7, "finish_pct": 35.7}, {"club": "CMJVB", "club_name": "CMASS EDGE", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17CMJVB1NE", "team_name": "CMASS EDGE 17 Black", "finish": 5, "n_teams": 14, "wins": 4, "losses": 2, "sets_for": 8, "sets_against": 6, "finish_pct": 71.4}, {"club": "CMJVB", "club_name": "CMASS EDGE", "event": "AAUTopSeriesWinter26", "division": "18 O", "team_code": "G18CMJVB1NE", "team_name": "CMASS EDGE 18 Black", "finish": 7, "n_teams": 12, "wins": 3, "losses": 2, "sets_for": 8, "sets_against": 5, "finish_pct": 50.0}, {"club": "HKJVB", "club_name": "Husky", "event": "AAUTopSeriesSpring26", "division": "14 O", "team_code": "G14HKJVB1NE", "team_name": "Husky 14 National", "finish": 2, "n_teams": 7, "wins": 4, "losses": 1, "sets_for": 8, "sets_against": 3, "finish_pct": 85.7}, {"club": "HKJVB", "club_name": "Husky", "event": "AAUTopSeriesSpring26", "division": "16 O", "team_code": "G16HKJVB1NE", "team_name": "Husky 16 National", "finish": 5, "n_teams": 10, "wins": 2, "losses": 3, "sets_for": 5, "sets_against": 7, "finish_pct": 60.0}, {"club": "HKJVB", "club_name": "Husky", "event": "AAUTopSeriesSpring26", "division": "17 O", "team_code": "G17HKJVB1NE", "team_name": "Husky 17 National", "finish": 8, "n_teams": 9, "wins": 1, "losses": 5, "sets_for": 3, "sets_against": 11, "finish_pct": 22.2}, {"club": "HKJVB", "club_name": "Husky", "event": "AAUTopSeriesSpring26", "division": "18 O", "team_code": "G18HKJVB1NE", "team_name": "Husky 18 National", "finish": 1, "n_teams": 8, "wins": 4, "losses": 1, "sets_for": 8, "sets_against": 5, "finish_pct": 100.0}, {"club": "HKJVB", "club_name": "Husky", "event": "AAUTopSeriesWinter26", "division": "14 O", "team_code": "G14HKJVB1NE", "team_name": "Husky 14 National", "finish": 4, "n_teams": 9, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 5, "finish_pct": 66.7}, {"club": "HKJVB", "club_name": "Husky", "event": "AAUTopSeriesWinter26", "division": "15 O", "team_code": "G15HKJVB1NE", "team_name": "Husky 15 National", "finish": 10, "n_teams": 12, "wins": 1, "losses": 4, "sets_for": 3, "sets_against": 8, "finish_pct": 25.0}, {"club": "HKJVB", "club_name": "Husky", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16HKJVB1NE", "team_name": "Husky 16 National", "finish": 5, "n_teams": 14, "wins": 3, "losses": 2, "sets_for": 6, "sets_against": 5, "finish_pct": 71.4}, {"club": "HKJVB", "club_name": "Husky", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17HKJVB1NE", "team_name": "Husky 17 National", "finish": 12, "n_teams": 14, "wins": 1, "losses": 4, "sets_for": 4, "sets_against": 8, "finish_pct": 21.4}, {"club": "HKJVB", "club_name": "Husky", "event": "AAUTopSeriesWinter26", "division": "18 O", "team_code": "G18HKJVB1NE", "team_name": "Husky 18 National", "finish": 8, "n_teams": 12, "wins": 3, "losses": 2, "sets_for": 6, "sets_against": 6, "finish_pct": 41.7}, {"club": "LDNER", "club_name": "Lockdown VBC", "event": "AAUTopSeriesSpring26", "division": "15 O", "team_code": "G15LDNER1NE", "team_name": "Lockdown VBC 15 Cardinals", "finish": 3, "n_teams": 9, "wins": 3, "losses": 2, "sets_for": 6, "sets_against": 5, "finish_pct": 77.8}, {"club": "LDNER", "club_name": "Lockdown VBC", "event": "AAUTopSeriesSpring26", "division": "16 O", "team_code": "G16LDNER1NE", "team_name": "Lockdown VBC 16 Hawks", "finish": 8, "n_teams": 10, "wins": 2, "losses": 3, "sets_for": 7, "sets_against": 6, "finish_pct": 30.0}, {"club": "LDNER", "club_name": "Lockdown VBC", "event": "AAUTopSeriesSpring26", "division": "17 O", "team_code": "G17LDNER1NE", "team_name": "Lockdown VBC 17 Phoenix", "finish": 1, "n_teams": 9, "wins": 5, "losses": 2, "sets_for": 12, "sets_against": 5, "finish_pct": 100.0}, {"club": "LDNER", "club_name": "Lockdown VBC", "event": "AAUTopSeriesSpring26", "division": "18 O", "team_code": "G18LDNER1NE", "team_name": "Lockdown VBC 18 Eagles", "finish": 6, "n_teams": 8, "wins": 2, "losses": 3, "sets_for": 4, "sets_against": 8, "finish_pct": 37.5}, {"club": "LDNER", "club_name": "Lockdown VBC", "event": "AAUTopSeriesWinter26", "division": "15 O", "team_code": "G15LDNER1NE", "team_name": "Lockdown VBC 15 Cardinals", "finish": 5, "n_teams": 12, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 6, "finish_pct": 66.7}, {"club": "LDNER", "club_name": "Lockdown VBC", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16LDNER1NE", "team_name": "Lockdown VBC 16 Hawks", "finish": 12, "n_teams": 14, "wins": 1, "losses": 4, "sets_for": 2, "sets_against": 8, "finish_pct": 21.4}, {"club": "LDNER", "club_name": "Lockdown VBC", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17LDNER1NE", "team_name": "Lockdown VBC 17 Phoenix", "finish": 2, "n_teams": 14, "wins": 4, "losses": 1, "sets_for": 9, "sets_against": 2, "finish_pct": 92.9}, {"club": "LDNER", "club_name": "Lockdown VBC", "event": "AAUTopSeriesWinter26", "division": "18 O", "team_code": "G18LDNER1NE", "team_name": "Lockdown VBC 18 Eagles", "finish": 12, "n_teams": 12, "wins": 1, "losses": 4, "sets_for": 3, "sets_against": 8, "finish_pct": 8.3}, {"club": "LEGIO", "club_name": "TeamLVC", "event": "AAUTopSeriesSpring26", "division": "13 O", "team_code": "G13LEGIO1XL", "team_name": "TeamLVC 13 Black", "finish": 6, "n_teams": 7, "wins": 2, "losses": 4, "sets_for": 6, "sets_against": 9, "finish_pct": 28.6}, {"club": "LEGIO", "club_name": "TeamLVC", "event": "AAUTopSeriesSpring26", "division": "14 O", "team_code": "G14LEGIO1XL", "team_name": "TeamLVC 14 Black", "finish": 5, "n_teams": 7, "wins": 2, "losses": 3, "sets_for": 4, "sets_against": 6, "finish_pct": 42.9}, {"club": "LEGIO", "club_name": "TeamLVC", "event": "AAUTopSeriesSpring26", "division": "15 O", "team_code": "G15LEGIO1XL", "team_name": "TeamLVC 15 Black", "finish": 9, "n_teams": 9, "wins": 1, "losses": 4, "sets_for": 4, "sets_against": 8, "finish_pct": 11.1}, {"club": "LEGIO", "club_name": "TeamLVC", "event": "AAUTopSeriesSpring26", "division": "16 O", "team_code": "G16LEGIO1XL", "team_name": "TeamLVC 16 Black", "finish": 4, "n_teams": 10, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 5, "finish_pct": 70.0}, {"club": "LEGIO", "club_name": "TeamLVC", "event": "AAUTopSeriesSpring26", "division": "17 O", "team_code": "G17LEGIO1XL", "team_name": "TeamLVC 17 Black", "finish": 9, "n_teams": 9, "wins": 0, "losses": 5, "sets_for": 3, "sets_against": 10, "finish_pct": 11.1}, {"club": "LEGIO", "club_name": "TeamLVC", "event": "AAUTopSeriesSpring26", "division": "18 O", "team_code": "G18LEGIO1XL", "team_name": "TeamLVC 18 Black", "finish": 7, "n_teams": 8, "wins": 1, "losses": 4, "sets_for": 4, "sets_against": 9, "finish_pct": 25.0}, {"club": "LEGIO", "club_name": "TeamLVC", "event": "AAUTopSeriesWinter26", "division": "13 O", "team_code": "G13LEGIO1XL", "team_name": "TeamLVC 13 Black", "finish": 8, "n_teams": 8, "wins": 0, "losses": 5, "sets_for": 1, "sets_against": 10, "finish_pct": 12.5}, {"club": "LEGIO", "club_name": "TeamLVC", "event": "AAUTopSeriesWinter26", "division": "14 O", "team_code": "G14LEGIO1XL", "team_name": "TeamLVC 14 Black", "finish": 7, "n_teams": 9, "wins": 1, "losses": 4, "sets_for": 3, "sets_against": 9, "finish_pct": 33.3}, {"club": "LEGIO", "club_name": "TeamLVC", "event": "AAUTopSeriesWinter26", "division": "15 O", "team_code": "G15LEGIO1XL", "team_name": "TeamLVC 15 Black", "finish": 6, "n_teams": 12, "wins": 3, "losses": 2, "sets_for": 6, "sets_against": 7, "finish_pct": 58.3}, {"club": "LEGIO", "club_name": "TeamLVC", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16LEGIO1XL", "team_name": "TeamLVC 16 Black", "finish": 6, "n_teams": 14, "wins": 3, "losses": 2, "sets_for": 8, "sets_against": 5, "finish_pct": 64.3}, {"club": "LEGIO", "club_name": "TeamLVC", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17LEGIO1XL", "team_name": "TeamLVC 17 Black", "finish": 13, "n_teams": 14, "wins": 0, "losses": 5, "sets_for": 1, "sets_against": 10, "finish_pct": 14.3}, {"club": "LEGIO", "club_name": "TeamLVC", "event": "AAUTopSeriesWinter26", "division": "18 O", "team_code": "G18LEGIO1XL", "team_name": "TeamLVC 18 Black", "finish": 11, "n_teams": 12, "wins": 1, "losses": 4, "sets_for": 3, "sets_against": 9, "finish_pct": 16.7}, {"club": "MCJVB", "club_name": "Mill City 13's", "event": "AAUTopSeriesSpring26", "division": "13 O", "team_code": "G13MCJVB1NE", "team_name": "Mill City 13's", "finish": 3, "n_teams": 7, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 6, "finish_pct": 71.4}, {"club": "MCJVB", "club_name": "Mill City 13's", "event": "AAUTopSeriesSpring26", "division": "15 O", "team_code": "G15MCJVB1NE", "team_name": "Mill City 15's", "finish": 7, "n_teams": 9, "wins": 2, "losses": 3, "sets_for": 4, "sets_against": 7, "finish_pct": 33.3}, {"club": "MCJVB", "club_name": "Mill City 13's", "event": "AAUTopSeriesSpring26", "division": "16 O", "team_code": "G16MCJVB1NE", "team_name": "Mill City 16's", "finish": 7, "n_teams": 10, "wins": 2, "losses": 3, "sets_for": 4, "sets_against": 7, "finish_pct": 40.0}, {"club": "MCJVB", "club_name": "Mill City 13's", "event": "AAUTopSeriesSpring26", "division": "17 O", "team_code": "G17MCJVB1NE", "team_name": "Mill City 17's", "finish": 3, "n_teams": 9, "wins": 4, "losses": 1, "sets_for": 9, "sets_against": 5, "finish_pct": 77.8}, {"club": "MCJVB", "club_name": "Mill City 13's", "event": "AAUTopSeriesSpring26", "division": "18 O", "team_code": "G18MCJVB1NE", "team_name": "Mill City 18\u2019s", "finish": 8, "n_teams": 8, "wins": 0, "losses": 5, "sets_for": 2, "sets_against": 10, "finish_pct": 12.5}, {"club": "MCJVB", "club_name": "Mill City 13's", "event": "AAUTopSeriesWinter26", "division": "13 O", "team_code": "G13MCJVB1NE", "team_name": "Mill City 13's", "finish": 7, "n_teams": 8, "wins": 1, "losses": 4, "sets_for": 4, "sets_against": 9, "finish_pct": 25.0}, {"club": "MCJVB", "club_name": "Mill City 13's", "event": "AAUTopSeriesWinter26", "division": "15 O", "team_code": "G15MCJVB1NE", "team_name": "Mill City 15's", "finish": 12, "n_teams": 12, "wins": 0, "losses": 5, "sets_for": 1, "sets_against": 10, "finish_pct": 8.3}, {"club": "MCJVB", "club_name": "Mill City 13's", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16MCJVB1NE", "team_name": "Mill City 16's", "finish": 13, "n_teams": 14, "wins": 0, "losses": 5, "sets_for": 2, "sets_against": 10, "finish_pct": 14.3}, {"club": "MCJVB", "club_name": "Mill City 13's", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17MCJVB1NE", "team_name": "Mill City 17's", "finish": 7, "n_teams": 14, "wins": 3, "losses": 3, "sets_for": 8, "sets_against": 7, "finish_pct": 57.1}, {"club": "MCJVB", "club_name": "Mill City 13's", "event": "AAUTopSeriesWinter26", "division": "18 O", "team_code": "G18MCJVB1NE", "team_name": "Mill City 18\u2019s", "finish": 10, "n_teams": 12, "wins": 1, "losses": 4, "sets_for": 3, "sets_against": 8, "finish_pct": 25.0}, {"club": "NEVBC", "club_name": "Northeast 13.1", "event": "AAUTopSeriesSpring26", "division": "13 O", "team_code": "G13NEVBC1NE", "team_name": "Northeast 13.1", "finish": 1, "n_teams": 7, "wins": 6, "losses": 0, "sets_for": 12, "sets_against": 0, "finish_pct": 100.0}, {"club": "NEVBC", "club_name": "Northeast 13.1", "event": "AAUTopSeriesSpring26", "division": "14 O", "team_code": "G14NEVBC1NE", "team_name": "Northeast 14.1", "finish": 1, "n_teams": 7, "wins": 6, "losses": 0, "sets_for": 12, "sets_against": 1, "finish_pct": 100.0}, {"club": "NEVBC", "club_name": "Northeast 13.1", "event": "AAUTopSeriesSpring26", "division": "15 O", "team_code": "G15NEVBC1NE", "team_name": "Northeast 15.1", "finish": 1, "n_teams": 9, "wins": 6, "losses": 0, "sets_for": 12, "sets_against": 1, "finish_pct": 100.0}, {"club": "NEVBC", "club_name": "Northeast 13.1", "event": "AAUTopSeriesSpring26", "division": "16 O", "team_code": "G16NEVBC1NE", "team_name": "Northeast 16.1", "finish": 1, "n_teams": 10, "wins": 6, "losses": 0, "sets_for": 12, "sets_against": 1, "finish_pct": 100.0}, {"club": "NEVBC", "club_name": "Northeast 13.1", "event": "AAUTopSeriesSpring26", "division": "17 O", "team_code": "G17NEVBC1NE", "team_name": "Northeast 17.1", "finish": 2, "n_teams": 9, "wins": 4, "losses": 1, "sets_for": 8, "sets_against": 2, "finish_pct": 88.9}, {"club": "NEVBC", "club_name": "Northeast 13.1", "event": "AAUTopSeriesSpring26", "division": "18 O", "team_code": "G18NEVBC1NE", "team_name": "Northeast 18.1", "finish": 3, "n_teams": 8, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 4, "finish_pct": 75.0}, {"club": "NEVBC", "club_name": "Northeast 13.1", "event": "AAUTopSeriesWinter26", "division": "13 O", "team_code": "G13NEVBC1NE", "team_name": "Northeast 13.1", "finish": 2, "n_teams": 8, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 5, "finish_pct": 87.5}, {"club": "NEVBC", "club_name": "Northeast 13.1", "event": "AAUTopSeriesWinter26", "division": "14 O", "team_code": "G14NEVBC1NE", "team_name": "Northeast 14.1", "finish": 3, "n_teams": 9, "wins": 4, "losses": 2, "sets_for": 8, "sets_against": 5, "finish_pct": 77.8}, {"club": "NEVBC", "club_name": "Northeast 13.1", "event": "AAUTopSeriesWinter26", "division": "15 O", "team_code": "G15NEVBC1NE", "team_name": "Northeast 15.1", "finish": 2, "n_teams": 12, "wins": 4, "losses": 1, "sets_for": 9, "sets_against": 2, "finish_pct": 91.7}, {"club": "NEVBC", "club_name": "Northeast 13.1", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16NEVBC1NE", "team_name": "Northeast 16.1", "finish": 1, "n_teams": 14, "wins": 6, "losses": 0, "sets_for": 12, "sets_against": 2, "finish_pct": 100.0}, {"club": "NEVBC", "club_name": "Northeast 13.1", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17NEVBC1NE", "team_name": "Northeast 17.1", "finish": 4, "n_teams": 14, "wins": 4, "losses": 2, "sets_for": 8, "sets_against": 4, "finish_pct": 78.6}, {"club": "NEVBC", "club_name": "Northeast 13.1", "event": "AAUTopSeriesWinter26", "division": "18 O", "team_code": "G18NEVBC1NE", "team_name": "Northeast 18.1", "finish": 3, "n_teams": 12, "wins": 4, "losses": 2, "sets_for": 10, "sets_against": 4, "finish_pct": 83.3}, {"club": "NYCJR", "club_name": "NYC Juniors", "event": "AAUTopSeriesWinter26", "division": "13 O", "team_code": "G13NYCJR1GE", "team_name": "NYC Juniors 13 National", "finish": 1, "n_teams": 8, "wins": 5, "losses": 0, "sets_for": 10, "sets_against": 3, "finish_pct": 100.0}, {"club": "NYCJR", "club_name": "NYC Juniors", "event": "AAUTopSeriesWinter26", "division": "14 O", "team_code": "G14NYCJR1GE", "team_name": "NYC Juniors 14 National", "finish": 1, "n_teams": 9, "wins": 5, "losses": 1, "sets_for": 10, "sets_against": 3, "finish_pct": 100.0}, {"club": "NYCJR", "club_name": "NYC Juniors", "event": "AAUTopSeriesWinter26", "division": "15 O", "team_code": "G15NYCJR1GE", "team_name": "NYC Juniors 15 National", "finish": 4, "n_teams": 12, "wins": 4, "losses": 2, "sets_for": 8, "sets_against": 5, "finish_pct": 75.0}, {"club": "NYCJR", "club_name": "NYC Juniors", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16NYCJR1GE", "team_name": "NYC Juniors 16 National", "finish": 9, "n_teams": 14, "wins": 2, "losses": 3, "sets_for": 5, "sets_against": 7, "finish_pct": 42.9}, {"club": "NYCJR", "club_name": "NYC Juniors", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17NYCJR1GE", "team_name": "NYC Juniors 17 National", "finish": 9, "n_teams": 14, "wins": 2, "losses": 3, "sets_for": 4, "sets_against": 7, "finish_pct": 42.9}, {"club": "NYCJR", "club_name": "NYC Juniors", "event": "AAUTopSeriesWinter26", "division": "18 O", "team_code": "G18NYCJR1GE", "team_name": "NYC Juniors 18 Gemini", "finish": 4, "n_teams": 12, "wins": 3, "losses": 2, "sets_for": 6, "sets_against": 5, "finish_pct": 75.0}, {"club": "NYCVA", "club_name": "NYC VBA", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16NYCVA1GE", "team_name": "NYC VBA 16 Broadway", "finish": 8, "n_teams": 14, "wins": 2, "losses": 3, "sets_for": 5, "sets_against": 6, "finish_pct": 50.0}, {"club": "NYCVA", "club_name": "NYC VBA", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17NYCVA1GE", "team_name": "NYC VBA 17 Westside", "finish": 1, "n_teams": 14, "wins": 6, "losses": 0, "sets_for": 12, "sets_against": 0, "finish_pct": 100.0}, {"club": "RRJVB", "club_name": "Boston United", "event": "AAUTopSeriesSpring26", "division": "13 O", "team_code": "G13RRJVB1NE", "team_name": "Boston United 13 National", "finish": 2, "n_teams": 7, "wins": 4, "losses": 2, "sets_for": 8, "sets_against": 6, "finish_pct": 85.7}, {"club": "RRJVB", "club_name": "Boston United", "event": "AAUTopSeriesSpring26", "division": "15 O", "team_code": "G15RRJVB1NE", "team_name": "Boston United 15 National", "finish": 4, "n_teams": 9, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 6, "finish_pct": 66.7}, {"club": "RRJVB", "club_name": "Boston United", "event": "AAUTopSeriesSpring26", "division": "16 O", "team_code": "G16RRJVB1NE", "team_name": "Boston United 16 National", "finish": 6, "n_teams": 10, "wins": 2, "losses": 3, "sets_for": 4, "sets_against": 6, "finish_pct": 50.0}, {"club": "RRJVB", "club_name": "Boston United", "event": "AAUTopSeriesSpring26", "division": "17 O", "team_code": "G17RRJVB1NE", "team_name": "Boston United 17 National - Kyle", "finish": 7, "n_teams": 9, "wins": 1, "losses": 4, "sets_for": 3, "sets_against": 9, "finish_pct": 33.3}, {"club": "RRJVB", "club_name": "Boston United", "event": "AAUTopSeriesSpring26", "division": "18 O", "team_code": "G18RRJVB1NE", "team_name": "Boston United 18 National", "finish": 5, "n_teams": 8, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 5, "finish_pct": 50.0}, {"club": "RRJVB", "club_name": "Boston United", "event": "AAUTopSeriesWinter26", "division": "18 O", "team_code": "G18RRJVB1NE", "team_name": "Boston United 18 Premier", "finish": 6, "n_teams": 12, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 5, "finish_pct": 58.3}, {"club": "SJJVB", "club_name": "SMASH", "event": "AAUTopSeriesSpring26", "division": "13 O", "team_code": "G13SJJVB1NE", "team_name": "SMASH 13s", "finish": 4, "n_teams": 7, "wins": 2, "losses": 3, "sets_for": 5, "sets_against": 6, "finish_pct": 57.1}, {"club": "SJJVB", "club_name": "SMASH", "event": "AAUTopSeriesSpring26", "division": "14 O", "team_code": "G14SJJVB1NE", "team_name": "SMASH 14s", "finish": 3, "n_teams": 7, "wins": 3, "losses": 3, "sets_for": 8, "sets_against": 6, "finish_pct": 71.4}, {"club": "SJJVB", "club_name": "SMASH", "event": "AAUTopSeriesSpring26", "division": "15 O", "team_code": "G15SJJVB1NE", "team_name": "SMASH 15s", "finish": 2, "n_teams": 9, "wins": 4, "losses": 3, "sets_for": 9, "sets_against": 6, "finish_pct": 88.9}, {"club": "SJJVB", "club_name": "SMASH", "event": "AAUTopSeriesSpring26", "division": "16 O", "team_code": "G16SJJVB1NE", "team_name": "SMASH 16s", "finish": 3, "n_teams": 10, "wins": 4, "losses": 2, "sets_for": 9, "sets_against": 6, "finish_pct": 80.0}, {"club": "SJJVB", "club_name": "SMASH", "event": "AAUTopSeriesSpring26", "division": "17 O", "team_code": "G17SJJVB1NE", "team_name": "SMASH 17s", "finish": 6, "n_teams": 9, "wins": 3, "losses": 3, "sets_for": 8, "sets_against": 7, "finish_pct": 44.4}, {"club": "SJJVB", "club_name": "SMASH", "event": "AAUTopSeriesSpring26", "division": "18 O", "team_code": "G18SJJVB1NE", "team_name": "SMASH 18s", "finish": 4, "n_teams": 8, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 4, "finish_pct": 62.5}, {"club": "SJJVB", "club_name": "SMASH", "event": "AAUTopSeriesWinter26", "division": "13 O", "team_code": "G13SJJVB1NE", "team_name": "SMASH 13s", "finish": 3, "n_teams": 8, "wins": 3, "losses": 2, "sets_for": 8, "sets_against": 4, "finish_pct": 75.0}, {"club": "SJJVB", "club_name": "SMASH", "event": "AAUTopSeriesWinter26", "division": "14 O", "team_code": "G14SJJVB1NE", "team_name": "SMASH 14s", "finish": 5, "n_teams": 9, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 5, "finish_pct": 55.6}, {"club": "SJJVB", "club_name": "SMASH", "event": "AAUTopSeriesWinter26", "division": "15 O", "team_code": "G15SJJVB1NE", "team_name": "SMASH 15s", "finish": 3, "n_teams": 12, "wins": 4, "losses": 1, "sets_for": 9, "sets_against": 3, "finish_pct": 83.3}, {"club": "SJJVB", "club_name": "SMASH", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16SJJVB1NE", "team_name": "SMASH 16s", "finish": 2, "n_teams": 14, "wins": 4, "losses": 1, "sets_for": 9, "sets_against": 3, "finish_pct": 92.9}, {"club": "SJJVB", "club_name": "SMASH", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17SJJVB1NE", "team_name": "SMASH 17s", "finish": 3, "n_teams": 14, "wins": 4, "losses": 1, "sets_for": 8, "sets_against": 5, "finish_pct": 85.7}, {"club": "SJJVB", "club_name": "SMASH", "event": "AAUTopSeriesWinter26", "division": "18 O", "team_code": "G18SJJVB1NE", "team_name": "SMASH 18s", "finish": 2, "n_teams": 12, "wins": 4, "losses": 2, "sets_for": 9, "sets_against": 6, "finish_pct": 91.7}, {"club": "SOSVB", "club_name": "Sideout 13N Carly", "event": "AAUTopSeriesWinter26", "division": "13 O", "team_code": "G13SOSVB1GE", "team_name": "Sideout 13N Carly", "finish": 5, "n_teams": 8, "wins": 3, "losses": 2, "sets_for": 8, "sets_against": 4, "finish_pct": 50.0}, {"club": "SOSVB", "club_name": "Sideout 13N Carly", "event": "AAUTopSeriesWinter26", "division": "14 O", "team_code": "G14SOSVB1GE", "team_name": "Sideout 14N Jeff", "finish": 2, "n_teams": 9, "wins": 5, "losses": 1, "sets_for": 9, "sets_against": 3, "finish_pct": 88.9}, {"club": "SOSVB", "club_name": "Sideout 13N Carly", "event": "AAUTopSeriesWinter26", "division": "15 O", "team_code": "G15SOSVB1GE", "team_name": "Sideout 15N Artem", "finish": 1, "n_teams": 12, "wins": 6, "losses": 0, "sets_for": 12, "sets_against": 1, "finish_pct": 100.0}, {"club": "SOSVB", "club_name": "Sideout 13N Carly", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16SOSVB1GE", "team_name": "Sideout 16N Cooper", "finish": 3, "n_teams": 14, "wins": 4, "losses": 1, "sets_for": 8, "sets_against": 4, "finish_pct": 85.7}, {"club": "SOSVB", "club_name": "Sideout 13N Carly", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16SOSVB2GE", "team_name": "Sideout 16N Carly", "finish": 14, "n_teams": 14, "wins": 0, "losses": 5, "sets_for": 1, "sets_against": 10, "finish_pct": 7.1}, {"club": "SOSVB", "club_name": "Sideout 13N Carly", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17SOSVB1GE", "team_name": "Sideout 17N Justin", "finish": 8, "n_teams": 14, "wins": 2, "losses": 3, "sets_for": 6, "sets_against": 6, "finish_pct": 50.0}, {"club": "SOSVB", "club_name": "Sideout 13N Carly", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17SOSVB2GE", "team_name": "Sideout 17N Artem", "finish": 11, "n_teams": 14, "wins": 2, "losses": 3, "sets_for": 4, "sets_against": 7, "finish_pct": 28.6}, {"club": "SOSVB", "club_name": "Sideout 13N Carly", "event": "AAUTopSeriesWinter26", "division": "18 O", "team_code": "G18SOSVB1GE", "team_name": "Sideout 18N Elvis", "finish": 5, "n_teams": 12, "wins": 3, "losses": 2, "sets_for": 6, "sets_against": 5, "finish_pct": 66.7}, {"club": "SPAVB", "club_name": "Spa City", "event": "AAUTopSeriesSpring26", "division": "13 O", "team_code": "G13SPAVB1XL", "team_name": "Spa City 13 Aqua", "finish": 5, "n_teams": 7, "wins": 2, "losses": 3, "sets_for": 5, "sets_against": 7, "finish_pct": 42.9}, {"club": "SPAVB", "club_name": "Spa City", "event": "AAUTopSeriesSpring26", "division": "14 O", "team_code": "G14SPAVB1XL", "team_name": "Spa City 14 Aqua", "finish": 4, "n_teams": 7, "wins": 3, "losses": 3, "sets_for": 7, "sets_against": 7, "finish_pct": 57.1}, {"club": "SPAVB", "club_name": "Spa City", "event": "AAUTopSeriesSpring26", "division": "15 O", "team_code": "G15SPAVB1XL", "team_name": "Spa City 15 Aqua", "finish": 8, "n_teams": 9, "wins": 1, "losses": 4, "sets_for": 4, "sets_against": 9, "finish_pct": 22.2}, {"club": "SPAVB", "club_name": "Spa City", "event": "AAUTopSeriesSpring26", "division": "16 O", "team_code": "G16SPAVB1XL", "team_name": "Spa City 16 Aqua", "finish": 2, "n_teams": 10, "wins": 4, "losses": 1, "sets_for": 9, "sets_against": 4, "finish_pct": 90.0}, {"club": "SPAVB", "club_name": "Spa City", "event": "AAUTopSeriesSpring26", "division": "17 O", "team_code": "G17SPAVB1XL", "team_name": "Spa City 17 Aqua", "finish": 5, "n_teams": 9, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 6, "finish_pct": 55.6}, {"club": "SPAVB", "club_name": "Spa City", "event": "AAUTopSeriesWinter26", "division": "13 O", "team_code": "G13SPAVB1XL", "team_name": "Spa City 13 Aqua", "finish": 4, "n_teams": 8, "wins": 3, "losses": 2, "sets_for": 6, "sets_against": 7, "finish_pct": 62.5}, {"club": "SPAVB", "club_name": "Spa City", "event": "AAUTopSeriesWinter26", "division": "14 O", "team_code": "G14SPAVB1XL", "team_name": "Spa City 14 Aqua", "finish": 8, "n_teams": 9, "wins": 1, "losses": 5, "sets_for": 5, "sets_against": 9, "finish_pct": 22.2}, {"club": "SPAVB", "club_name": "Spa City", "event": "AAUTopSeriesWinter26", "division": "15 O", "team_code": "G15SPAVB1XL", "team_name": "Spa City 15 Aqua", "finish": 11, "n_teams": 12, "wins": 1, "losses": 4, "sets_for": 3, "sets_against": 8, "finish_pct": 16.7}, {"club": "SPAVB", "club_name": "Spa City", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16SPAVB1XL", "team_name": "Spa City 16 Aqua", "finish": 11, "n_teams": 14, "wins": 2, "losses": 3, "sets_for": 5, "sets_against": 7, "finish_pct": 28.6}, {"club": "SPAVB", "club_name": "Spa City", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17SPAVB1XL", "team_name": "Spa City 17 Aqua", "finish": 10, "n_teams": 14, "wins": 2, "losses": 3, "sets_for": 4, "sets_against": 7, "finish_pct": 35.7}, {"club": "SPAVB", "club_name": "Spa City", "event": "AAUTopSeriesWinter26", "division": "18 O", "team_code": "G18SPAVB1XL", "team_name": "Spa City 18 Aqua", "finish": 9, "n_teams": 12, "wins": 1, "losses": 4, "sets_for": 4, "sets_against": 9, "finish_pct": 33.3}, {"club": "VOLFX", "club_name": "VolleyFX", "event": "AAUTopSeriesWinter26", "division": "15 O", "team_code": "G15VOLFX1WE", "team_name": "VolleyFX 15 Chant", "finish": 8, "n_teams": 12, "wins": 2, "losses": 3, "sets_for": 5, "sets_against": 7, "finish_pct": 41.7}, {"club": "VOLFX", "club_name": "VolleyFX", "event": "AAUTopSeriesWinter26", "division": "16 O", "team_code": "G16VOLFX1WE", "team_name": "VolleyFX 16 Mantra", "finish": 4, "n_teams": 14, "wins": 4, "losses": 2, "sets_for": 9, "sets_against": 5, "finish_pct": 78.6}, {"club": "VOLFX", "club_name": "VolleyFX", "event": "AAUTopSeriesWinter26", "division": "17 O", "team_code": "G17VOLFX1WE", "team_name": "VolleyFX 17 Rapture", "finish": 6, "n_teams": 14, "wins": 3, "losses": 2, "sets_for": 7, "sets_against": 5, "finish_pct": 64.3}, {"club": "VOLFX", "club_name": "VolleyFX", "event": "AAUTopSeriesWinter26", "division": "18 O", "team_code": "G18VOLFX1WE", "team_name": "VolleyFX 18 Magic", "finish": 1, "n_teams": 12, "wins": 4, "losses": 1, "sets_for": 8, "sets_against": 3, "finish_pct": 100.0}];
+
+// --- Event segmented control ---
+let activeEvent = 'ALL';
+document.getElementById('eventSeg').addEventListener('click', e => {
+  const btn = e.target.closest('.seg-btn');
+  if (!btn) return;
+  activeEvent = btn.dataset.val;
+  document.querySelectorAll('#eventSeg .seg-btn').forEach(b => b.classList.toggle('active', b === btn));
+  renderLeaderboard();
+  updateSummaryCards();
+});
+
+function filteredDetails() {
+  return activeEvent === 'ALL' ? details : details.filter(d => d.event === activeEvent);
+}
+
+// --- Summary cards ---
+function updateSummaryCards() {
+  const fd = filteredDetails();
+  const eventsShown = [...new Set(fd.map(d => d.event))];
+  document.getElementById('summaryCards').innerHTML = [
+    ['Events', eventsShown.length],
+    ['Divisions', new Set(fd.map(d => d.event + d.division)).size],
+    ['Clubs', new Set(fd.map(d => d.club)).size],
+    ['Team Entries', fd.length],
+  ].map(([l,v]) => `<div class="card"><div class="label">${l}</div><div class="value">${v}</div></div>`).join('');
+}
+updateSummaryCards();
+
+// --- Compute club rankings from current filtered details ---
+function computeClubRankings(fd) {
+  const map = {};
+  fd.forEach(r => {
+    if (!map[r.club]) map[r.club] = {
+      club: r.club, club_name: r.club_name,
+      total_pts: 0, finish_pcts: [], entries: 0,
+      wins: 0, losses: 0, firsts: 0, top3: 0,
+    };
+    const c = map[r.club];
+    const pts = r.n_teams - r.finish + 1;
+    c.total_pts += pts;
+    c.finish_pcts.push(r.finish_pct);
+    c.entries++;
+    c.wins += r.wins;
+    c.losses += r.losses;
+    if (r.finish === 1) c.firsts++;
+    if (r.finish <= 3) c.top3++;
+  });
+  return Object.values(map)
+    .map(c => ({...c, avg_finish_pct: c.finish_pcts.reduce((a,b)=>a+b,0)/c.finish_pcts.length}))
+    .sort((a,b) => b.total_pts - a.total_pts || b.avg_finish_pct - a.avg_finish_pct);
+}
+
+// --- Render leaderboard ---
+let openClub = null;
+function renderLeaderboard() {
+  const fd = filteredDetails();
+  const q = (document.getElementById('clubSearch').value || '').toLowerCase();
+  const minE = parseInt(document.getElementById('minEntries').value || '1', 10);
+  const rankings = computeClubRankings(fd);
+  const filtered = rankings.filter(c =>
+    c.entries >= minE && (!q || c.club_name.toLowerCase().includes(q) || c.club.toLowerCase().includes(q))
+  );
+
+  document.getElementById('clubCount').textContent =
+    `Showing ${filtered.length} club${filtered.length !== 1 ? 's' : ''}.`;
+
+  const tbody = document.getElementById('clubTbody');
+  tbody.innerHTML = filtered.map((c, i) => {
+    const rank = i + 1;
+    const medal = rank === 1 ? '🥇 ' : rank === 2 ? '🥈 ' : rank === 3 ? '🥉 ' : '';
+    const pct = c.avg_finish_pct;
+    const barColor = pct >= 70 ? '#15803d' : pct >= 45 ? '#b45309' : '#b91c1c';
+    const bar = `<div class="bar-wrap"><div class="bar" style="width:${Math.min(pct,100).toFixed(1)}%;background:${barColor}"></div><span class="bar-label">${pct.toFixed(1)}%</span></div>`;
+    const isOpen = openClub === c.club;
+    return `
+      <tr class="club-row${isOpen ? ' open' : ''}" data-club="${c.club}" onclick="toggleDetail('${c.club}')">
+        <td class="rank-cell">${rank}</td>
+        <td><strong>${medal}${c.club_name}</strong><br><span class="muted code">${c.club}</span></td>
+        <td class="num">${c.total_pts}</td>
+        <td>${bar}</td>
+        <td class="num">${c.entries}</td>
+        <td class="num">${c.firsts || '—'}</td>
+        <td class="num">${c.top3 || '—'}</td>
+        <td class="num">${c.wins}-${c.losses}</td>
+      </tr>
+      <tr class="detail-row" id="detail-${c.club}" style="display:${isOpen ? '' : 'none'}">
+        <td></td>
+        <td colspan="7">
+          <div class="detail-inner" id="detail-inner-${c.club}"></div>
+        </td>
+      </tr>`;
+  }).join('');
+
+  if (openClub) renderDetail(openClub, fd);
+}
+renderLeaderboard();
+
+document.getElementById('clubSearch').addEventListener('input', renderLeaderboard);
+document.getElementById('minEntries').addEventListener('change', renderLeaderboard);
+
+// --- Expand/collapse detail ---
+function toggleDetail(club) {
+  if (openClub === club) {
+    openClub = null;
+  } else {
+    openClub = club;
+  }
+  renderLeaderboard();
+}
+
+function renderDetail(club, fd) {
+  const inner = document.getElementById('detail-inner-' + club);
+  if (!inner) return;
+  const rows = (fd || filteredDetails()).filter(d => d.club === club)
+    .sort((a,b) => a.event.localeCompare(b.event) || a.division.localeCompare(b.division));
+
+  const byEvent = {};
+  rows.forEach(r => {
+    if (!byEvent[r.event]) byEvent[r.event] = [];
+    byEvent[r.event].push(r);
+  });
+
+  let h = '<div class="detail-grid">';
+  for (const [evt, evtRows] of Object.entries(byEvent)) {
+    const evtLabel = evt.replace('AAUTopSeries','').replace('26','') + ' 2026';
+    const cards = evtRows.map(r => {
+      const badge = r.finish === 1 ? '🥇' : r.finish === 2 ? '🥈' : r.finish === 3 ? '🥉' : `${r.finish}/${r.n_teams}`;
+      const color = r.finish_pct >= 70 ? '#15803d' : r.finish_pct >= 45 ? '#b45309' : '#b91c1c';
+      return `<div class="dc-entry">
+        <strong>${r.division}</strong> &nbsp;
+        <span style="font-weight:700;color:${color}">${badge}</span>
+        &nbsp;<span class="muted">${r.team_name} · ${r.wins}-${r.losses} · ${r.finish_pct.toFixed(1)}%</span>
+      </div>`;
+    }).join('');
+    h += `<div class="detail-card">
+      <div class="dc-title"><span class="event-chip">${evtLabel}</span></div>
+      ${cards}
+    </div>`;
+  }
+  h += '</div>';
+  inner.innerHTML = h;
+}
+
+// --- Division standings browser ---
+const divEventFilter = document.getElementById('divEventFilter');
+const divFilter = document.getElementById('divFilter');
+const allEvents = [...new Set(details.map(d => d.event))].sort();
+const allDivs = [...new Set(details.map(d => d.division))].sort();
+allEvents.forEach(e => {
+  const o = document.createElement('option'); o.value = e;
+  o.text = e.replace('AAUTopSeries','').replace('26',' 2026');
+  divEventFilter.appendChild(o);
+});
+allDivs.forEach(d => {
+  const o = document.createElement('option'); o.value = d; o.text = d; divFilter.appendChild(o);
+});
+
+function renderDivStandings() {
+  const ev = divEventFilter.value;
+  const dv = divFilter.value;
+  const filtered = details.filter(d =>
+    (ev === 'ALL' || d.event === ev) && (dv === 'ALL' || d.division === dv)
+  );
+  if (!filtered.length) {
+    document.getElementById('divStandingsOutput').innerHTML = '<p class="muted">No data.</p>';
+    return;
+  }
+  const groups = {};
+  filtered.forEach(r => {
+    const key = r.event + '||' + r.division;
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(r);
+  });
+  let h = '';
+  for (const [key, rows] of Object.entries(groups)) {
+    const [evt, div] = key.split('||');
+    const evtLabel = evt.replace('AAUTopSeries','').replace('26','') + ' 2026';
+    const sorted = [...rows].sort((a,b) => a.finish - b.finish);
+    h += `<h3>${evtLabel} — ${div}</h3><div style="overflow-x:auto;margin-bottom:18px;">
+    <table><thead><tr><th>#</th><th>Team</th><th class="num">W</th><th class="num">L</th>
+    <th class="num">Sets W</th><th class="num">Sets L</th><th class="num">Set %</th>
+    </tr></thead><tbody>`;
+    sorted.forEach(r => {
+      const badge = r.finish===1?'🥇':r.finish===2?'🥈':r.finish===3?'🥉':r.finish;
+      const sp = r.sets_for+r.sets_against > 0
+        ? ((r.sets_for/(r.sets_for+r.sets_against))*100).toFixed(1)+'%' : '—';
+      h += `<tr><td class="num"><strong>${badge}</strong></td>
+        <td>${r.team_name}<br><span class="muted code">${r.team_code}</span></td>
+        <td class="num">${r.wins}</td><td class="num">${r.losses}</td>
+        <td class="num">${r.sets_for}</td><td class="num">${r.sets_against}</td>
+        <td class="num">${sp}</td></tr>`;
+    });
+    h += '</tbody></table></div>';
+  }
+  document.getElementById('divStandingsOutput').innerHTML = h;
+}
+divEventFilter.addEventListener('change', renderDivStandings);
+divFilter.addEventListener('change', renderDivStandings);
+renderDivStandings();
+</script>
+</body>
+</html>

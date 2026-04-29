@@ -1,11 +1,11 @@
 # Power Ranking Summary
 
-Generated: 2026-03-25 22:36
+Generated: 2026-04-28 23:07
 
 ## Run Overview
 
-- Total matches loaded: 6789
-- Matches used for ratings: 6677
+- Total matches loaded: 7655
+- Matches used for ratings: 7543
 - Excluded unknown results: 112
 - Selected model: massey
 
@@ -13,10 +13,11 @@ Generated: 2026-03-25 22:36
 
 | Model | Matches | Accuracy | Log Loss | Brier |
 |---|---:|---:|---:|---:|
-| massey | 6677 | 73.8% | 0.623 | 0.216 |
-| elo_margin | 6677 | 68.9% | 0.623 | 0.217 |
-| elo_baseline | 6677 | 67.1% | 0.655 | 0.231 |
-| hybrid_points | 6677 | 67.0% | 0.947 | 0.251 |
+| massey | 7543 | 74.0% | 0.622 | 0.215 |
+| elo_margin | 7543 | 69.0% | 0.619 | 0.215 |
+| elo_baseline | 7543 | 67.2% | 0.652 | 0.230 |
+| hybrid_points | 7543 | 66.5% | 1.022 | 0.257 |
+| massey_recent | 7543 | 66.0% | 0.659 | 0.233 |
 
 ## Best Model By Pool
 
@@ -25,17 +26,17 @@ Generated: 2026-03-25 22:36
 |  | elo_baseline | 71.4% | 7 |
 | B14 | massey | 79.1% | 139 |
 | B15 | massey | 79.1% | 158 |
-| B16 | massey | 76.8% | 297 |
+| B16 | massey | 76.4% | 297 |
 | B17 | massey | 71.6% | 327 |
 | B18 | massey | 71.0% | 373 |
-| G12 | massey | 77.8% | 203 |
-| G13 | massey | 79.9% | 432 |
-| G14 | massey | 74.6% | 756 |
-| G15 | massey | 72.6% | 952 |
-| G16 | massey | 72.5% | 1225 |
-| G17 | massey | 73.9% | 867 |
-| G18 | massey | 73.8% | 698 |
-| MIXED | hybrid_points | 66.3% | 243 |
+| G12 | massey | 78.8% | 222 |
+| G13 | massey | 80.3% | 523 |
+| G14 | massey | 74.8% | 896 |
+| G15 | massey | 73.1% | 1105 |
+| G16 | massey | 72.9% | 1389 |
+| G17 | massey | 75.0% | 989 |
+| G18 | massey | 73.8% | 816 |
+| MIXED | hybrid_points | 64.9% | 302 |
 
 ## Top 10 Teams Per Pool
 
@@ -112,120 +113,130 @@ Generated: 2026-03-25 22:36
 ### G12
 | Rank | Team | Code | Rating | W-L | Matches |
 |---:|---|---|---:|---:|---:|
-| 1 | Libero 12 Huskies | G12LIBER1CH | 36.4 | 8-0 | 8 |
-| 2 | GG 12 1 | G12GGVOL1GE | 27.6 | 6-1 | 7 |
-| 3 | NYC Juniors 12 Blue | G12NYCJR1GE | 25.3 | 4-2 | 6 |
-| 4 | NYCLBVC 12U BLUE | G12118021XX | 24.5 | 6-3 | 9 |
-| 5 | RVT 12-1 Surf | G12ROCKA1GE | 23.5 | 5-2 | 7 |
-| 6 | NYC Juniors 12 Orange | G12NYCJR2GE | 20.8 | 6-2 | 8 |
-| 7 | Husky 12 Red | G12HKJVB1NE | 20.6 | 3-0 | 3 |
-| 8 | Avidity 12 Ruby | G12AVVBC1NE | 16.8 | 12-0 | 12 |
-| 9 | Legacy 12 Premier | G12LCVBC1GE | 16.3 | 6-3 | 9 |
-| 10 | MGA 12's Black | G12MGJVB1NE | 16.3 | 5-0 | 5 |
+| 1 | Libero 12 Huskies | G12LIBER1CH | 36.5 | 8-0 | 8 |
+| 2 | GG 12 1 | G12GGVOL1GE | 27.7 | 6-1 | 7 |
+| 3 | NYC Juniors 12 Blue | G12NYCJR1GE | 25.4 | 4-2 | 6 |
+| 4 | NYCLBVC 12U BLUE | G12118021XX | 24.7 | 6-3 | 9 |
+| 5 | RVT 12-1 Surf | G12ROCKA1GE | 23.6 | 5-2 | 7 |
+| 6 | NYC Juniors 12 Orange | G12NYCJR2GE | 21.0 | 6-2 | 8 |
+| 7 | Husky 12 Red | G12HKJVB1NE | 20.5 | 3-0 | 3 |
+| 8 | Avidity 12 Ruby | G12AVVBC1NE | 17.0 | 12-0 | 12 |
+| 9 | Legacy 12 Premier | G12LCVBC1GE | 16.4 | 6-3 | 9 |
+| 10 | MGA 12's Black | G12MGJVB1NE | 16.4 | 5-0 | 5 |
 
 ### G13
 | Rank | Team | Code | Rating | W-L | Matches |
 |---:|---|---|---:|---:|---:|
-| 1 | NYC Juniors 13 National | G13NYCJR1GE | 39.2 | 10-2 | 12 |
-| 2 | Northeast 13.1 | G13NEVBC1NE | 36.4 | 11-4 | 15 |
-| 3 | Gulfside 13U Prime | G13FGSVA1FL | 36.2 | 8-1 | 9 |
-| 4 | Apex VBTC 13 Apex Red | G13APXTC1OV | 36.1 | 6-1 | 7 |
-| 5 | CT STARS 13s Lidania | G13CSJVB1NE | 32.9 | 11-2 | 13 |
-| 6 | Sideout 13N Carly | G13SOSVB1GE | 32.6 | 3-2 | 5 |
-| 7 | RVT 13-1 Surf | G13ROCKA1GE | 32.5 | 5-3 | 8 |
-| 8 | Libero 13 HUSKIES | G13LIBER1CH | 32.1 | 7-1 | 8 |
-| 9 | SMASH 13s | G13SJJVB1NE | 30.3 | 3-2 | 5 |
-| 10 | CMASS EDGE 13 Blue | G13CMJVB1NE | 28.3 | 5-0 | 5 |
+| 1 | NYC Juniors 13 National | G13NYCJR1GE | 38.0 | 10-2 | 12 |
+| 2 | Gulfside 13U Prime | G13FGSVA1FL | 34.9 | 8-1 | 9 |
+| 3 | Apex VBTC 13 Apex Red | G13APXTC1OV | 34.9 | 6-1 | 7 |
+| 4 | Northeast 13.1 | G13NEVBC1NE | 34.4 | 17-4 | 21 |
+| 5 | Sideout 13N Carly | G13SOSVB1GE | 33.0 | 3-2 | 5 |
+| 6 | CT STARS 13s Lidania | G13CSJVB1NE | 31.2 | 11-2 | 13 |
+| 7 | RVT 13-1 Surf | G13ROCKA1GE | 30.9 | 5-3 | 8 |
+| 8 | Libero 13 HUSKIES | G13LIBER1CH | 30.3 | 7-1 | 8 |
+| 9 | SMASH 13s | G13SJJVB1NE | 29.8 | 5-5 | 10 |
+| 10 | NYC Juniors 13 Travel | G13NYCJR2GE | 25.8 | 7-2 | 9 |
 
 ### G14
 | Rank | Team | Code | Rating | W-L | Matches |
 |---:|---|---|---:|---:|---:|
-| 1 | Gulfside 14U Prime | G14FGSVA1FL | 44.0 | 8-1 | 9 |
-| 2 | Sideout 14N Jeff | G14SOSVB1GE | 40.6 | 5-1 | 6 |
-| 3 | NYC Juniors 14 National | G14NYCJR1GE | 37.8 | 11-2 | 13 |
-| 4 | Husky 14 National | G14HKJVB1NE | 37.5 | 3-2 | 5 |
-| 5 | Northeast 14.1 | G14NEVBC1NE | 36.3 | 11-3 | 14 |
-| 6 | RVT 14-1 Surf | G14ROCKA1GE | 35.2 | 7-1 | 8 |
-| 7 | GVC 14-Black | G14GRVBC1NE | 32.9 | 6-2 | 8 |
-| 8 | Lockdown VBC 14 Mockingjays | G14LDNER1NE | 32.8 | 11-0 | 11 |
-| 9 | 14U BPR 14 1 | G14117971XX | 32.0 | 6-1 | 7 |
-| 10 | RVT 14-2 Swim | G14ROCKA2GE | 30.3 | 6-2 | 8 |
+| 1 | Gulfside 14U Prime | G14FGSVA1FL | 45.5 | 8-1 | 9 |
+| 2 | Sideout 14N Jeff | G14SOSVB1GE | 40.8 | 5-1 | 6 |
+| 3 | NYC Juniors 14 National | G14NYCJR1GE | 39.0 | 11-2 | 13 |
+| 4 | Northeast 14.1 | G14NEVBC1NE | 37.7 | 17-3 | 20 |
+| 5 | RVT 14-1 Surf | G14ROCKA1GE | 34.8 | 7-1 | 8 |
+| 6 | GVC 14-Black | G14GRVBC1NE | 34.5 | 6-2 | 8 |
+| 7 | SMASH 14s | G14SJJVB1NE | 33.8 | 6-5 | 11 |
+| 8 | Husky 14 National | G14HKJVB1NE | 33.0 | 7-3 | 10 |
+| 9 | Lockdown VBC 14 Mockingjays | G14LDNER1NE | 31.9 | 11-0 | 11 |
+| 10 | 14U BPR 14 1 | G14117971XX | 31.6 | 6-1 | 7 |
 
 ### G15
 | Rank | Team | Code | Rating | W-L | Matches |
 |---:|---|---|---:|---:|---:|
-| 1 | Gulfside 15U Prime | G15FGSVA1FL | 57.1 | 9-0 | 9 |
-| 2 | Sideout 15N Artem | G15SOSVB1GE | 53.5 | 6-0 | 6 |
-| 3 | SMASH 15s | G15SJJVB1NE | 45.0 | 4-1 | 5 |
-| 4 | Northeast 15.1 | G15NEVBC1NE | 44.9 | 12-2 | 14 |
-| 5 | NYC Juniors 15 Blue | G15NYCJR2GE | 41.3 | 5-2 | 7 |
-| 6 | NYC Juniors 15 National | G15NYCJR1GE | 41.2 | 10-4 | 14 |
-| 7 | Lockdown VBC 15 Cardinals | G15LDNER1NE | 36.7 | 3-2 | 5 |
-| 8 | VolleyFX 15 Chant | G15VOLFX1WE | 33.4 | 2-3 | 5 |
-| 9 | TeamLVC 15 Black | G15LEGIO1XL | 33.2 | 7-5 | 12 |
-| 10 | LHV Girls 15-1 Viragos | G15LHVBC1NE | 33.0 | 6-0 | 6 |
+| 1 | Gulfside 15U Prime | G15FGSVA1FL | 56.5 | 9-0 | 9 |
+| 2 | Sideout 15N Artem | G15SOSVB1GE | 51.1 | 6-0 | 6 |
+| 3 | Northeast 15.1 | G15NEVBC1NE | 44.6 | 18-2 | 20 |
+| 4 | NYC Juniors 15 Blue | G15NYCJR2GE | 40.5 | 5-2 | 7 |
+| 5 | NYC Juniors 15 National | G15NYCJR1GE | 39.7 | 10-4 | 14 |
+| 6 | SMASH 15s | G15SJJVB1NE | 38.9 | 8-4 | 12 |
+| 7 | Lockdown VBC 15 Cardinals | G15LDNER1NE | 33.5 | 6-4 | 10 |
+| 8 | LHV Girls 15-1 Viragos | G15LHVBC1NE | 33.0 | 6-0 | 6 |
+| 9 | RVT 15-1 Surf | G15ROCKA1GE | 31.8 | 5-3 | 8 |
+| 10 | Husky 15 National | G15HKJVB1NE | 31.1 | 1-4 | 5 |
 
 ### G16
 | Rank | Team | Code | Rating | W-L | Matches |
 |---:|---|---|---:|---:|---:|
-| 1 | Northeast 16.1 | G16NEVBC1NE | 50.6 | 15-0 | 15 |
-| 2 | SMASH 16s | G16SJJVB1NE | 46.4 | 4-1 | 5 |
-| 3 | Sideout 16N Cooper | G16SOSVB1GE | 44.4 | 4-1 | 5 |
-| 4 | TeamLVC 16 Black | G16LEGIO1XL | 37.6 | 3-2 | 5 |
-| 5 | LIBERO 16 HUSKIES | G16LIBER1CH | 36.7 | 6-3 | 9 |
-| 6 | VolleyFX 16 Mantra | G16VOLFX1WE | 36.6 | 10-3 | 13 |
-| 7 | RVT 16-1 Surf | G16ROCKA1GE | 35.8 | 5-2 | 7 |
-| 8 | CALI 16 Black | G16CACLI1GE | 35.4 | 3-2 | 5 |
-| 9 | BEV 16 Empire | G16BEVNY1GE | 34.1 | 4-3 | 7 |
-| 10 | NYC Juniors 16 National | G16NYCJR1GE | 32.9 | 7-6 | 13 |
+| 1 | Northeast 16.1 | G16NEVBC1NE | 49.7 | 21-0 | 21 |
+| 2 | Sideout 16N Cooper | G16SOSVB1GE | 43.6 | 4-1 | 5 |
+| 3 | SMASH 16s | G16SJJVB1NE | 41.8 | 8-3 | 11 |
+| 4 | TeamLVC 16 Black | G16LEGIO1XL | 36.2 | 6-4 | 10 |
+| 5 | LIBERO 16 HUSKIES | G16LIBER1CH | 36.1 | 6-3 | 9 |
+| 6 | VolleyFX 16 Mantra | G16VOLFX1WE | 35.8 | 10-3 | 13 |
+| 7 | RVT 16-1 Surf | G16ROCKA1GE | 35.3 | 5-2 | 7 |
+| 8 | CALI 16 Black | G16CACLI1GE | 34.7 | 3-2 | 5 |
+| 9 | BEV 16 Empire | G16BEVNY1GE | 33.6 | 4-3 | 7 |
+| 10 | NYC Juniors 16 National | G16NYCJR1GE | 31.8 | 7-6 | 13 |
 
 ### G17
 | Rank | Team | Code | Rating | W-L | Matches |
 |---:|---|---|---:|---:|---:|
-| 1 | NYC VBA 17 Westside | G17NYCVA1GE | 41.4 | 15-0 | 15 |
-| 2 | Northeast 17.1 | G17NEVBC1NE | 34.2 | 11-3 | 14 |
-| 3 | SMASH 17s | G17SJJVB1NE | 32.4 | 5-1 | 6 |
-| 4 | VolleyFX 17 Rapture | G17VOLFX1WE | 29.7 | 10-4 | 14 |
-| 5 | Maverick 17 Maroon | G17MAVRK1OV | 29.6 | 6-2 | 8 |
-| 6 | Sideout 17N Justin | G17SOSVB1GE | 29.1 | 2-3 | 5 |
-| 7 | Buffalo Stampeders-Tre Mann Elite 17 1 | G17BUFLO1FL | 28.7 | 8-1 | 9 |
-| 8 | SMASH 17s Black Ice | G17SJJVB2NE | 27.8 | 9-2 | 11 |
-| 9 | JVC 17 1 | G17118611XX | 27.1 | 8-1 | 9 |
-| 10 | Lockdown VBC 17 Phoenix | G17LDNER1NE | 24.7 | 4-2 | 6 |
+| 1 | NYC VBA 17 Westside | G17NYCVA1GE | 42.4 | 15-0 | 15 |
+| 2 | Northeast 17.1 | G17NEVBC1NE | 34.6 | 15-4 | 19 |
+| 3 | SMASH 17s | G17SJJVB1NE | 31.6 | 8-4 | 12 |
+| 4 | Lockdown VBC 17 Phoenix | G17LDNER1NE | 31.3 | 9-4 | 13 |
+| 5 | VolleyFX 17 Rapture | G17VOLFX1WE | 30.5 | 10-4 | 14 |
+| 6 | Maverick 17 Maroon | G17MAVRK1OV | 30.4 | 6-2 | 8 |
+| 7 | Sideout 17N Justin | G17SOSVB1GE | 30.4 | 2-3 | 5 |
+| 8 | Buffalo Stampeders-Tre Mann Elite 17 1 | G17BUFLO1FL | 28.6 | 8-1 | 9 |
+| 9 | SMASH 17s Black Ice | G17SJJVB2NE | 27.3 | 9-2 | 11 |
+| 10 | JVC 17 1 | G17118611XX | 27.1 | 8-1 | 9 |
 
 ### G18
 | Rank | Team | Code | Rating | W-L | Matches |
 |---:|---|---|---:|---:|---:|
-| 1 | Northeast 18.1 | G18NEVBC1NE | 36.2 | 4-2 | 6 |
-| 2 | SMASH 18s | G18SJJVB1NE | 32.2 | 4-2 | 6 |
-| 3 | VolleyFX 18 Magic | G18VOLFX1WE | 29.1 | 12-1 | 13 |
-| 4 | USANY Fortitude 18 - 1 | G18USANY1XL | 29.0 | 22-0 | 22 |
-| 5 | CMASS EDGE 18 Black | G18CMJVB1NE | 28.5 | 3-2 | 5 |
-| 6 | Husky 18 National | G18HKJVB1NE | 26.9 | 3-2 | 5 |
-| 7 | SMASH 18s Attack | G18SJJVB2NE | 25.9 | 3-2 | 5 |
-| 8 | Sideout 18N Elvis | G18SOSVB1GE | 25.5 | 3-2 | 5 |
-| 9 | Next Level 18 1 | G18NXTLV1PU | 25.3 | 8-1 | 9 |
-| 10 | ESO 18 Elite | G18ESVBC1OV | 25.1 | 8-1 | 9 |
+| 1 | Northeast 18.1 | G18NEVBC1NE | 35.1 | 7-4 | 11 |
+| 2 | CMASS EDGE 18 Black | G18CMJVB1NE | 30.8 | 7-3 | 10 |
+| 3 | SMASH 18s | G18SJJVB1NE | 29.9 | 7-4 | 11 |
+| 4 | VolleyFX 18 Magic | G18VOLFX1WE | 29.3 | 12-1 | 13 |
+| 5 | USANY Fortitude 18 - 1 | G18USANY1XL | 29.3 | 22-0 | 22 |
+| 6 | Husky 18 National | G18HKJVB1NE | 28.6 | 7-3 | 10 |
+| 7 | SMASH 18s Attack | G18SJJVB2NE | 26.6 | 3-2 | 5 |
+| 8 | ESO 18 Elite | G18ESVBC1OV | 25.4 | 8-1 | 9 |
+| 9 | Next Level 18 1 | G18NXTLV1PU | 25.4 | 8-1 | 9 |
+| 10 | Sideout 18N Elvis | G18SOSVB1GE | 25.4 | 3-2 | 5 |
 
 ### MIXED
 | Rank | Team | Code | Rating | W-L | Matches |
 |---:|---|---|---:|---:|---:|
 | 1 | Paradigm Rebellion | G16PARAD1WE | 42.1 | 1-0 | 1 |
-| 2 | Mass Premier 14 2 Blue | G14MAJVB3NE | 34.7 | 1-0 | 1 |
-| 3 | NYC Juniors 12 Blue | G12NYCJR1GE | 34.5 | 1-0 | 1 |
-| 4 | SMASH 15s | G15SJJVB1NE | 34.1 | 4-1 | 5 |
-| 5 | Northeast 16 Orange | G16NEVBC5NE | 33.4 | 1-0 | 1 |
-| 6 | 603 United 16 Seacoast White | G16LFJVB2NE | 30.4 | 1-0 | 1 |
-| 7 | Libero 12 Huskies | G12LIBER1CH | 29.5 | 1-0 | 1 |
-| 8 | RVT 14-1 Surf | G14ROCKA1GE | 29.3 | 1-0 | 1 |
-| 9 | Husky 16 Northeast Red | G16HKJVB2NE | 28.1 | 0-1 | 1 |
-| 10 | LHVA 16 Purple National | G16LHVBA1GE | 25.7 | 1-0 | 1 |
+| 2 | NYCLBVC 16U BLUE ELITE | G16118021XX | 41.8 | 1-0 | 1 |
+| 3 | Northeast 15.2 | G15NEVBC2NE | 39.2 | 6-0 | 6 |
+| 4 | Northeast 16.3 | G16NEVBC3NE | 38.0 | 1-1 | 2 |
+| 5 | Mass Premier 14 2 Blue | G14MAJVB3NE | 34.8 | 1-0 | 1 |
+| 6 | NYC Juniors 12 Blue | G12NYCJR1GE | 34.5 | 1-0 | 1 |
+| 7 | SMASH 15s | G15SJJVB1NE | 34.1 | 4-1 | 5 |
+| 8 | Northeast 16 Orange | G16NEVBC5NE | 33.4 | 1-0 | 1 |
+| 9 | 603 United 16 Seacoast White | G16LFJVB2NE | 30.4 | 1-0 | 1 |
+| 10 | RVT 14-1 Surf | G14ROCKA1GE | 30.1 | 1-0 | 1 |
 
 
 ## Boston United Improvement
 
 | BU Team | Opponent | Loss Date | Win Date | Days | Margin Swing |
 |---|---|---:|---:|---:|---:|
+| Boston United 13 National | Mill City 13's | 2026-04-26 | 2026-04-26 | 0 | +28.0 |
+| Boston United 14 National | Blast 14U Jungle Cats | 2026-04-25 | 2026-04-26 | 1 | +19.0 |
+| Boston United 18 National | TeamLVC 18 Black | 2026-02-08 | 2026-04-26 | 77 | +11.0 |
+| Boston United 17 National - Kyle | TeamLVC 17 Black | 2026-02-08 | 2026-04-26 | 77 | +0.0 |
+| Boston United 14 National | Dig Deep 14 Stars | 2026-02-21 | 2026-04-12 | 50 | +26.0 |
+| Boston United 14 Northeast | SLAM 14P Red | 2026-03-21 | 2026-04-12 | 22 | +13.0 |
+| Boston United 14 Titanium | Avidity 14 Emerald | 2026-04-11 | 2026-04-12 | 1 | +6.0 |
+| Boston United 17 National - Dimitri | HardRock 17 | 2025-12-06 | 2026-04-11 | 126 | +24.0 |
+| Boston United 16 Titanium | Mass Impact 16 Cam | 2026-01-24 | 2026-04-11 | 77 | +14.0 |
+| Boston United 13 Sapphire | Lockdown VBC 13 Robins | 2026-02-21 | 2026-04-11 | 49 | +13.0 |
 | Boston United 13 Select - Brittany | SLAM 13P Red | 2026-02-21 | 2026-03-22 | 29 | +22.0 |
 | Boston United 18 Select | Mass Power VB 18 Pink | 2026-02-22 | 2026-03-22 | 28 | +22.0 |
 | Boston United 18 Northeast | Mass Impact 18 Mike | 2025-12-07 | 2026-03-22 | 105 | +17.0 |
@@ -236,16 +247,6 @@ Generated: 2026-03-25 22:36
 | Boston United Boys 15 National | SMASH Boys 15-1 | 2025-12-20 | 2026-03-15 | 85 | +0.0 |
 | Boston United Boys 17 National 1 | Meraki VB 17 1 | 2025-11-22 | 2026-03-14 | 112 | +12.0 |
 | Boston United Boys 16 National 1 | NE Storm 16 Lightning | 2025-11-22 | 2026-03-14 | 112 | +9.0 |
-| Boston United Boys 18 1 | NE Storm 18 Thunder | 2026-01-17 | 2026-03-14 | 56 | +9.0 |
-| Boston United 17 National - Dimitri | Dig Deep 17 Ginger | 2026-01-11 | 2026-02-21 | 41 | +11.0 |
-| Boston United 17 Northeast | EliteZ 17 GIRLS HP BLACK | 2026-01-24 | 2026-02-21 | 28 | +6.0 |
-| Boston United 16 Select 1 | PV 16 Select | 2026-02-07 | 2026-02-08 | 1 | +18.0 |
-| Boston United Boys 17 National 1 | MVP BOS 17 Black | 2025-11-22 | 2026-02-08 | 78 | +17.0 |
-| Boston United 16 Northeast | Northeast 16.3 | 2025-12-06 | 2026-02-07 | 63 | +16.0 |
-| Boston United Boys 17 Select 1 | LHV Boys 17-2 Boom | 2025-11-22 | 2026-02-01 | 71 | +34.0 |
-| Boston United Boys 15 Select 1 | South County Juniors Boys 15 1 | 2025-11-22 | 2026-01-31 | 70 | +3.0 |
-| Boston United Boys 17 Select 1 | PV Boys 17 2 | 2026-01-19 | 2026-01-31 | 12 | +3.0 |
-| Boston United 17 National - Dimitri | Mill City 17 Orange | 2025-12-07 | 2026-01-24 | 48 | +4.0 |
 
 ## Boys Club Improvement
 
