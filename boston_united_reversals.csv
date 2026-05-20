@@ -1,4 +1,8 @@
 bu_team_code,bu_team_name,opponent_code,opponent_name,pool_key,first_loss_date,reversal_win_date,days_to_reversal,first_loss_point_margin,reversal_win_point_margin,point_margin_swing,first_loss_event,reversal_win_event
+G17RRJVB4NE,Boston United 17 Select 1,G17TTVBC3NE,SLAM 17P White,G17,2026-04-11,2026-05-03,22,-9.0,6.0,15.0,AAUAprilChallenge26,AAUChampsFinals#2-26
+G15RRJVB2NE,Boston United 15 Northeast,G15LDNER3NE,Lockdown VBC 15 Ravens,G15,2025-12-14,2026-05-02,139,-24.0,6.0,30.0,25AAUHomeHolidGirls2,AAUChampsFinals#2-26
+G15RRJVB8NE,Boston United 15 Onyx,G15MNJVB2NE,Maine Jrs 15 Gold,G15,2026-03-21,2026-05-02,42,-23.0,5.0,28.0,AAUSpringKickOff26,AAUChampsFinals#2-26
+G16RRJVB2NE,Boston United 16 Northeast,G16HEVBA9NE,HEVBA 16 99,G16,2026-04-12,2026-05-02,20,-15.0,5.0,20.0,AAUAprilChallenge26,AAUChampsFinals#2-26
 G13RRJVB1NE,Boston United 13 National,G13MCJVB1NE,Mill City 13's,G13,2026-04-26,2026-04-26,0,-18.0,10.0,28.0,AAUTopSeriesSpring26,AAUTopSeriesSpring26
 G14RRJVB1NE,Boston United 14 National,G14BVJVB1NE,Blast 14U Jungle Cats,G14,2026-04-25,2026-04-26,1,0.0,19.0,19.0,AAUTopSeriesSpring26,AAUTopSeriesSpring26
 G18RRJVB1NE,Boston United 18 National,G18LEGIO1XL,TeamLVC 18 Black,G18,2026-02-08,2026-04-26,77,-2.0,9.0,11.0,New York City Open,AAUTopSeriesSpring26

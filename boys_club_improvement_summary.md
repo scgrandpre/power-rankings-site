@@ -1,7 +1,7 @@
 # Boys Club Improvement Summary
 
 - Boys teams analyzed: 209
-- Boys clubs analyzed: 52
+- Boys clubs analyzed: 42
 
 ## Top Improving Boys Teams
 
@@ -28,23 +28,23 @@
 
 ## Top Improving Boys Clubs
 
-- #1 PWRSP: score +3.474, repeat z +0.604, massey z +3.474 (teams=1, matches=14)
-- #2 COQUI: score +2.384, repeat z +0.094, massey z +2.384 (teams=1, matches=8)
-- #3 ROCVC: score +2.366, repeat z +0.094, massey z +2.366 (teams=1, matches=7)
-- #4 DSTJN: score +2.267, repeat z +0.094, massey z +2.267 (teams=1, matches=7)
-- #5 113058: score +1.647, repeat z +2.210, massey z +1.647 (teams=1, matches=10)
-- #6 ALLIN: score +1.195, repeat z +0.585, massey z +1.195 (teams=3, matches=30)
-- #7 SLCTD: score +1.047, repeat z +0.094, massey z +1.047 (teams=1, matches=7)
-- #8 VENGE: score +0.899, repeat z -0.004, massey z +0.899 (teams=1, matches=11)
-- #9 UNVBC: score +0.724, repeat z -0.118, massey z +0.724 (teams=1, matches=14)
-- #10 LEGIO: score +0.281, repeat z +0.307, massey z +0.281 (teams=3, matches=81)
-- #11 PVJVB: score +0.253, repeat z +0.679, massey z +0.253 (teams=9, matches=219)
-- #12 SJJVB: score +0.212, repeat z -0.133, massey z +0.212 (teams=13, matches=239)
-- #13 DIGSV: score +0.148, repeat z +0.464, massey z +0.148 (teams=4, matches=37)
-- #14 LCVBC: score +0.124, repeat z +0.702, massey z +0.124 (teams=9, matches=83)
-- #15 MMVBC: score +0.117, repeat z +0.300, massey z +0.117 (teams=3, matches=42)
-- #16 CORE1: score +0.053, repeat z +0.612, massey z +0.053 (teams=7, matches=64)
-- #17 11828: score +0.021, repeat z -0.797, massey z +0.021 (teams=1, matches=24)
-- #18 CAPIT: score -0.012, repeat z -0.232, massey z -0.012 (teams=7, matches=242)
-- #19 LIFRY: score -0.049, repeat z -0.459, massey z -0.049 (teams=5, matches=38)
-- #20 BVJVB: score -0.078, repeat z -0.157, massey z -0.078 (teams=5, matches=172)
+- #1 TUSVA: score +0.000, repeat z +2.822, massey z +0.000 (teams=1, matches=2)
+- #2 113058: score +0.000, repeat z +2.003, massey z +0.000 (teams=1, matches=2)
+- #3 CSJVB: score +0.000, repeat z +0.765, massey z +0.000 (teams=2, matches=5)
+- #4 SAVBC: score +0.000, repeat z +0.658, massey z +0.000 (teams=3, matches=23)
+- #5 LCVBC: score +0.000, repeat z +0.650, massey z +0.000 (teams=6, matches=14)
+- #6 PVJVB: score +0.000, repeat z +0.629, massey z +0.000 (teams=8, matches=63)
+- #7 CORE1: score +0.000, repeat z +0.570, massey z +0.000 (teams=5, matches=12)
+- #8 PWRSP: score +0.000, repeat z +0.563, massey z +0.000 (teams=1, matches=6)
+- #9 XTREM: score +0.000, repeat z +0.560, massey z +0.000 (teams=2, matches=6)
+- #10 ALLIN: score +0.000, repeat z +0.545, massey z +0.000 (teams=2, matches=6)
+- #11 HKJVB: score +0.000, repeat z +0.498, massey z +0.000 (teams=9, matches=38)
+- #12 DIGSV: score +0.000, repeat z +0.437, massey z +0.000 (teams=4, matches=8)
+- #13 NEVBC: score +0.000, repeat z +0.358, massey z +0.000 (teams=11, matches=45)
+- #14 LEGIO: score +0.000, repeat z +0.296, massey z +0.000 (teams=3, matches=26)
+- #15 MMVBC: score +0.000, repeat z +0.290, massey z +0.000 (teams=3, matches=12)
+- #16 RRJVB: score +0.000, repeat z +0.248, massey z +0.000 (teams=11, matches=119)
+- #17 CAMYV: score +0.000, repeat z +0.222, massey z +0.000 (teams=1, matches=2)
+- #18 11775: score +0.000, repeat z +0.193, massey z +0.000 (teams=1, matches=18)
+- #19 RIVAL: score +0.000, repeat z +0.170, massey z +0.000 (teams=1, matches=2)
+- #20 MVPVA: score +0.000, repeat z +0.161, massey z +0.000 (teams=7, matches=59)
